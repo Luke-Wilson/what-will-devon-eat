@@ -1,31 +1,44 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <input type="text" v-model='playerName'/>
-    <button @click='createHandler'>Create</button>
+    <div v-if='!players.playerName.length'>
+      <input type="text" v-model='playerName'/>
+      <button @click='handleCreatePlayer'>Create Player</button>
+    </div>
+    <messages />
   </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 
-import HelloWorld from '@/components/HelloWorld.vue'
+import Messages from '@/components/Messages.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    Messages,
   },
   data: () => ({
     playerName: "",
+    text: "",
   }),
+  computed: {
+    ...mapState(['players'])
+  },
   methods: {
     ...mapActions(['createPlayer']),
-    createHandler(e) {
-      console.log('firing createHandler')
+    ...mapMutations(['PUSH_MESSAGE']),
+    handleCreatePlayer(e) {
+      console.log('firing handleCreatePlayer')
       this.createPlayer({playerName: this.playerName})
-    }
+    },
   },
+  mounted() {
+    window.socket.on('answer', answer => {
+      console.log({answer})
+      console.log(window.socket)
+    })
+  }
 }
 </script>

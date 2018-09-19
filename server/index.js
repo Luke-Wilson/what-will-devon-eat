@@ -9,6 +9,14 @@ const http = require('http').Server(app);
 const io = require('socket.io')(http);
 io.on('connection', (socket) => {
   console.log('a user connected');
+
+  socket.on('message', ({playerName, text}) => {
+    io.emit('message', {
+      playerName,
+      text,
+    })
+  })
+
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
@@ -17,6 +25,18 @@ io.on('connection', (socket) => {
 // Some helpful middleware
 app.use(bodyParser.json());
 app.use(morgan('dev'));
+
+// Middleware for CORS Headers
+app.use((req, res, next) => {
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    // Request headers you wish to allow
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    // Pass to next layer of middleware
+    next();
+});
 
 // Connect API routes
 require('./routes/routes.js')(app, express);
