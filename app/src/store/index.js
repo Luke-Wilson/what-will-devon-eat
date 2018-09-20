@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import food from './modules/food'
-import players from './modules/players'
+import foodModule from './modules/foodModule'
+import playerModule from './modules/playerModule'
 
 Vue.use(Vuex)
 
@@ -10,8 +10,8 @@ const debug = process.env.NODE_ENV !== 'production';
 
 export default new Vuex.Store({
   modules: {
-    food,
-    players,
+    foodModule,
+    playerModule,
   },
   strict: debug,
   // plugins: debug ? [createLogger()] : [],

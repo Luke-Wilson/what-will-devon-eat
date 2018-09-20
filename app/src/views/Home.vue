@@ -1,38 +1,32 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <div v-if='!players.playerName.length'>
-      <input type="text" v-model='playerName'/>
-      <button @click='handleCreatePlayer'>Create Player</button>
-    </div>
+    <question />
+    <player-name-input v-if='!playerModule.playerName.length' />
     <messages />
   </div>
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from 'vuex'
+import { mapState } from 'vuex'
 
 import Messages from '@/components/Messages.vue'
+import PlayerNameInput from '@/components/PlayerNameInput.vue'
+import Question from '@/components/Question.vue'
 
 export default {
   name: 'home',
   components: {
     Messages,
+    PlayerNameInput,
+    Question,
   },
   data: () => ({
     playerName: "",
     text: "",
   }),
   computed: {
-    ...mapState(['players'])
-  },
-  methods: {
-    ...mapActions(['createPlayer']),
-    ...mapMutations(['PUSH_MESSAGE']),
-    handleCreatePlayer(e) {
-      console.log('firing handleCreatePlayer')
-      this.createPlayer({playerName: this.playerName})
-    },
+    ...mapState(['playerModule'])
   },
   mounted() {
     window.socket.on('answer', answer => {

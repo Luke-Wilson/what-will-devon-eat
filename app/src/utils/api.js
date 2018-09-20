@@ -4,8 +4,6 @@ const apiBaseUrl = 'http://localhost:3000/api'
 
 export default {
   createPlayer({playerName}) {
-    console.log('playerName')
-    console.log(playerName)
     return axios({
       method: 'post',
       url: `${apiBaseUrl}/player`,
@@ -14,6 +12,22 @@ export default {
       },
     });
   },
+  getFoods() {
+    return axios({
+      method: 'get',
+      url: `${apiBaseUrl}/food`,
+    });
+  },
+  saveFoods(foods) {
+    return axios({
+      method: 'put',
+      url: `${apiBaseUrl}/food`,
+      data: {
+        foods
+      },
+    });
+  },
+
   // getRoomListing(queryParams) {
   //   return axios.get(`${muraAPIEndpoint}`, {
   //     params: {

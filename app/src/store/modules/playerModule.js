@@ -26,7 +26,7 @@ const mutations = {
   },
   PUSH_MESSAGE(state, {message}) {
     state.messages.push(message)
-  }
+  },
 }
 
 export default {
