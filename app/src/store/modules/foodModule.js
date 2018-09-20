@@ -2,13 +2,23 @@ import api from '@/utils/api'
 
 const state = {
   // Initial state of your store
-  foods: []
-
+  foods: [],
+  currentQuestionIndex: 0,
+  showAnswer: false,
 };
 
 const getters = {
   // Getters to access your store values
-
+  currentQuestion: (state) => {
+    if (state.currentQuestionIndex < state.foods.length) {
+      return state.foods[state.currentQuestionIndex]
+    } else {
+      return {}
+    }
+  },
+  gameFinished: (state) => {
+    return state.currentQuestionIndex >= state.foods.length
+  }
 };
 
 const actions = {
@@ -46,6 +56,13 @@ const mutations = {
     state.foods = foods
     console.log(state)
   },
+  REVEAL_ANSWER(state) {
+    state.showAnswer = true;
+  },
+  UPDATE_QUESTION_INDEX(state, {newIndex}) {
+    state.showAnswer = false;
+    state.currentQuestionIndex = newIndex
+  }
 }
 
 export default {

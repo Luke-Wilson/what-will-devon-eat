@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <question />
     <player-name-input v-if='!playerModule.playerName.length' />
     <messages />
   </div>
@@ -13,6 +12,7 @@ import { mapState } from 'vuex'
 import Messages from '@/components/Messages.vue'
 import PlayerNameInput from '@/components/PlayerNameInput.vue'
 import Question from '@/components/Question.vue'
+import router from '@/router'
 
 export default {
   name: 'home',
@@ -33,6 +33,11 @@ export default {
       console.log({answer})
       console.log(window.socket)
     })
+  },
+  updated() {
+    if (this.playerModule.playerName.length) {
+      router.push('play')
+    }
   }
 }
 </script>

@@ -22,15 +22,11 @@ export default {
     ...mapActions([
       'getFoods',
       'updateFoods',
-      'saveFoods'
+      'saveFoods',
     ]),
     handleSave() {
       this.saveFoods()
     },
-  },
-  mounted() {
-    console.log('mounted')
-    this.getFoods()
   },
 }
 </script>

@@ -7,7 +7,10 @@ module.exports = function(app, express) {
   // app.get("/api/players/:id", playersController.getCustomerById);
   app.post("/api/player", playersController.createPlayer);
 
-  //ADDRESSES ROUTES
+  //FOOD ROUTES
   app.get("/api/food", foodController.getAllFoods);
+
+  app.put("/api/food", foodController.saveFoods);
+
 
 };

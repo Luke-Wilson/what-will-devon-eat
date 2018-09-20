@@ -17,6 +17,15 @@ io.on('connection', (socket) => {
     })
   })
 
+  socket.on('nextquestion', (currentQuestion) =>{
+    console.log('sending next question')
+    io.emit('nextquestionindex', currentQuestion+1)
+  })
+
+  socket.on('requestanswer', () =>{
+    io.emit('revealanswer')
+  })
+
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
