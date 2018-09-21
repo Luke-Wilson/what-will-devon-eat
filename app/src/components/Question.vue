@@ -4,10 +4,12 @@
       Fudge. Something went wrong. Actually, I wonder if Devon eats fudge...
     </div>
     <div v-else>
-      <h3>Will Devon eat...</h3>
-      <h1>{{ currentQuestion.name }}?</h1>
-      <h2 v-if='foodModule.showAnswer'>The answer is: {{ currentQuestion.answer }}</h2>
-      <h2 v-else>...</h2>
+      <div id="question">
+        <h3>Will Devon eat...</h3>
+        <h1>{{ currentQuestion.name }}?</h1>
+        <h2 v-if='foodModule.showAnswer'>The answer is: {{ currentQuestion.answer }}</h2>
+        <h2 v-else>...</h2>
+      </div>
       <div class="options">
         <button
           class='btn btn-secondary'
@@ -86,10 +88,21 @@ export default {
 </script>
 
 <style media="screen">
+  #question {
+    background-color: rgba(277,37,233,0.9);
+    padding-top: 15px;
+    color: white;
+  }
+
+  #question .h1, #question .h2, #question .h3 {
+    font-weight: 800;
+  }
+
   .options {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgba(255,255,255,0.9);
   }
 
   .options button {

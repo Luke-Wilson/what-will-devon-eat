@@ -1,6 +1,6 @@
 <template>
   <div>
-    <input type="text" v-model='playerName'/>
+    <input id="player-name-input" v-model='playerName'/>
     <button :disabled='!playerName.length' @click.prevent='handleCreatePlayer'>Create Player</button>
   </div>
 </template>
@@ -22,3 +22,10 @@ export default {
   },
 }
 </script>
+
+<style media="screen">
+  #player-name-input {
+    background-color: black;
+    color: white;
+  }
+</style>
