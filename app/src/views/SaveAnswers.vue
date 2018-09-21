@@ -30,3 +30,9 @@ export default {
   },
 }
 </script>
+
+<style media="screen">
+  .btn.btn-lg {
+    margin-top: 20px;
+  }
+</style>
