@@ -1,14 +1,14 @@
 version: '3.3'
 services:
-  # app:
-  #   build:
-  #     context: ./app
-  #   ports:
-  #     - 8080:8080
-  #   volumes:
-  #     - type: bind
-  #       source: ./app
-  #       target: /wwwroot
+  app:
+    build:
+      context: ./app
+    ports:
+      - 80:8080
+    volumes:
+      - type: bind
+        source: ./app
+        target: /wwwroot
   #   environment:
   #     CHOKIDAR_USEPOLLING: 'true'
 
@@ -17,12 +17,12 @@ services:
       context: ./server
     # image: 'wwde_server'
     ports:
-      - 4000:4000
+      - 3000:3000
     volumes:
       - type: bind
         source: ./server
         target: /wwwroot
-    environment:
+    # environment:
       # CHOKIDAR_USEPOLLING: 'true'
 
 # volumes:

@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "serve-watch": "nodemon index.js",
+    "serve": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Luke Wilson <luke@lukewilson.net> (http://www.lukewilson.net)",
