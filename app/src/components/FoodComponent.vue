@@ -52,7 +52,7 @@ export default {
     flex: 0 0 30%;
   }
 
-  .btn {
+  .food-component .btn {
     margin: 0 5px;
   }
 </style>

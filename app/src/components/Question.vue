@@ -12,7 +12,7 @@
       </div>
       <div class="options">
         <button
-          class='btn btn-secondary'
+          class='btn btn-lg btn-secondary'
           :class='{
             "btn-warning": playerModule.currentAnswer === "yes" && !foodModule.showAnswer,
             "btn-success": playerModule.currentAnswer === "yes" && currentQuestion.answer === "yes" && foodModule.showAnswer,
@@ -25,7 +25,7 @@
         </button>
 
         <button
-          class='btn btn-secondary'
+          class='btn btn-lg btn-secondary'
           :class='{
             "btn-warning": playerModule.currentAnswer === "no" && !foodModule.showAnswer,
             "btn-success": playerModule.currentAnswer === "no" && currentQuestion.answer === "no" && foodModule.showAnswer,
@@ -38,7 +38,7 @@
         </button>
 
         <button
-          class='btn btn-secondary'
+          class='btn btn-lg btn-secondary'
           :class='{
             "btn-warning": playerModule.currentAnswer === "sometimes" && !foodModule.showAnswer,
             "btn-success": playerModule.currentAnswer === "sometimes" && currentQuestion.answer === "sometimes" && foodModule.showAnswer,

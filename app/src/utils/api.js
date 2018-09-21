@@ -8,7 +8,7 @@ export default {
       method: 'post',
       url: `${apiBaseUrl}/player`,
       data: {
-        playerName
+        playerName,
       },
     });
   },

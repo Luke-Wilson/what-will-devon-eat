@@ -1,8 +1,13 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <div class="header">
+      <small>Welcome to...</small>
+      <h1>What does Devon eat?</h1>
+    </div>
+    <img alt="Vue logo" src="../assets/devon.png">
+
     <player-name-input v-if='!playerModule.playerName.length' />
-    <messages />
+    <!-- <messages /> -->
   </div>
 </template>
 
@@ -41,3 +46,10 @@ export default {
   }
 }
 </script>
+
+<style media="screen">
+  .header {
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+  }
+</style>
