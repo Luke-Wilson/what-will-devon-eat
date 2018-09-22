@@ -2,6 +2,7 @@
   <div>
     <scoreboard />
     <question />
+    <!-- <messages /> -->
   </div>
 </template>
 
@@ -11,12 +12,14 @@ import router from '@/router'
 
 import Question from '@/components/Question'
 import Scoreboard from '@/components/Scoreboard'
+import Messages from '@/components/Messages'
 
 export default {
   name: "Play",
   components: {
     Question,
     Scoreboard,
+    Messages,
   },
   computed: {
     ...mapGetters([

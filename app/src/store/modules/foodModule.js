@@ -18,7 +18,8 @@ const getters = {
   },
   gameFinished: (state) => {
     return state.currentQuestionIndex >= state.foods.length
-  }
+  },
+
 };
 
 const actions = {
@@ -37,6 +38,9 @@ const actions = {
       console.log(r)
       commit('UPDATE_FOOD_PROP', {key: 'foods', value: r.data})
     })
+  },
+  resetGame({commit}) {
+    commit('UPDATE_FOOD_PROP', {key: "currentQuestionIndex", value: 0})
   },
 
 }

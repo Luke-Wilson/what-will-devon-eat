@@ -10,5 +10,3 @@ RUN npm install
 COPY . /wwwroot
 
 EXPOSE 8080
-
-CMD ["npm", "run", "serve"]

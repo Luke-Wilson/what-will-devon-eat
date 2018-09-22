@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <div v-if='playerModule.playerName === "admin"' id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/save-answers">Save Answers</router-link> |
       <router-link to="/play">Play</router-link> |
@@ -11,7 +11,7 @@
 </template>
 
 <script>
-  import { mapMutations, mapActions } from 'vuex'
+  import { mapMutations, mapActions, mapState } from 'vuex'
 
   export default {
     name: "App",
@@ -25,6 +25,9 @@
         'getFoods',
         'calculateNewScore',
       ]),
+    },
+    computed: {
+      ...mapState(['playerModule']),
     },
     mounted() {
       this.getFoods()
@@ -50,6 +53,11 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  z-index: 5;
 }
 #nav {
   padding: 30px;
@@ -62,5 +70,27 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+.container {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sliding-background {
+  background: url("/assets/food-icon-set-v2-01-.jpeg") repeat-x;
+  background-size: auto;
+  height: 100vh;
+  width: 3483px;
+  animation: slide 60s linear infinite;
+}
+
+@keyframes slide {
+  0%{
+    transform: translate3d(0, 0, 0);
+  }
+  100%{
+    transform: translate3d(-1692px, 0, 0); /* The image width */
+  }
 }
 </style>

@@ -1,6 +1,9 @@
 import axios from 'axios'
 
-const apiBaseUrl = 'http://localhost:3000/api'
+let apiBaseUrl = `${window.location.origin}/api`
+if (window.location.origin.includes("localhost")) {
+  apiBaseUrl = 'http://localhost:3000/api'
+}
 
 export default {
   createPlayer({playerName}) {

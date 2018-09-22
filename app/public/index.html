@@ -8,11 +8,14 @@
     <title>wwde</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
     <script>
-      var socket = io('http://localhost:3000');
+      if (window.location.origin.includes("localhost")) {
+        var socket = io();
+      } else {
+        var socket = io("http://104.248.189.238:3000")
+      }
     </script>
-    <style media="screen">
+    <!-- <style media="screen">
       .container {
         height: 100vh;
         overflow: hidden;
@@ -42,7 +45,7 @@
           transform: translate3d(-1692px, 0, 0); /* The image width */
         }
       }
-    </style>
+    </style> -->
   </head>
   <body>
     <noscript>
