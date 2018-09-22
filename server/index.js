@@ -38,8 +38,13 @@ app.use(morgan('dev'));
 // Middleware for CORS Headers
 app.use((req, res, next) => {
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8080');
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost');
+    var allowedOrigins = ['http://localhost', 'http://104.248.189.238'];
+    var origin = req.headers.origin;
+    if (allowedOrigins.indexOf(origin) > -1) {
+      console.log(origin)
+      res.setHeader('Access-Control-Allow-Origin', origin)
+    }
+
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     // Request headers you wish to allow
@@ -51,7 +56,7 @@ app.use((req, res, next) => {
 // Connect API routes
 require('./routes/routes.js')(app, express);
 
-app.use(express.static('../app/dist'));
+app.use(express.static(__dirname + '../app/dist'));
 
 //Set server to listen
 http.listen(3000, () => {
