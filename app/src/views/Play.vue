@@ -1,18 +1,20 @@
 <template>
   <div>
     <scoreboard />
-    <question />
-    <!-- <messages /> -->
+    <waiting-message v-if='foodModule.currentQuestionIndex < 0' />
+    <question v-else />
+    <messages />
   </div>
 </template>
 
 <script>
-import { mapMutations, mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapState } from 'vuex'
 import router from '@/router'
 
 import Question from '@/components/Question'
 import Scoreboard from '@/components/Scoreboard'
 import Messages from '@/components/Messages'
+import WaitingMessage from '@/components/WaitingMessage'
 
 export default {
   name: "Play",
@@ -20,23 +22,23 @@ export default {
     Question,
     Scoreboard,
     Messages,
+    WaitingMessage,
   },
   computed: {
-    ...mapGetters([
-      'currentQuestion',
-      'gameFinished',
-    ]),
-  },
-  methods: {
-    ...mapActions(['getFoods']),
-    ...mapMutations(['UPDATE_QUESTION_INDEX']),
+    ...mapState(['foodModule']),
+    ...mapGetters(['gameFinished']),
   },
   updated() {
-    console.log('this.gameFinished')
-    console.log(this.gameFinished)
     if (this.gameFinished) {
-      router.go('/winners')
+      router.push('/winners')
     }
+  },
+  beforeRouteEnter(to, from, next) {
+    next(vm => {
+      if (vm.gameFinished) {
+        router.push('/winners')
+      }
+    })
   },
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="scoreboard">
-    <span>{{playerModule.playerName}}</span>
-    <span>{{playerModule.score}}</span>
+    <span class="scoreboard__name">{{playerModule.playerName}}</span>
+    <span class="scoreboard__score">{{playerModule.score}} points</span>
   </div>
 </template>
 
@@ -19,6 +19,15 @@ export default {
 <style lang="css">
   .scoreboard {
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 40px;
+    font-size: 1.2em;
+    color: white;
+    background-color: black;
   }
+
+
+
+
 </style>

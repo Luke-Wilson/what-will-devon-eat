@@ -3,7 +3,7 @@ import api from '@/utils/api'
 const state = {
   // Initial state of your store
   foods: [],
-  currentQuestionIndex: 0,
+  currentQuestionIndex: -1,
   showAnswer: false,
 };
 

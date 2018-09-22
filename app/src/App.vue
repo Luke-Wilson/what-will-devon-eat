@@ -20,6 +20,7 @@
         'UPDATE_QUESTION_INDEX',
         'REVEAL_ANSWER',
         'UPDATE_PLAYERS_PROP',
+        'PUSH_FINAL_SCORE',
       ]),
       ...mapActions([
         'getFoods',
@@ -42,13 +43,17 @@
         this.REVEAL_ANSWER()
         this.calculateNewScore()
       })
+
+      window.socket.on('playerscore', ({playerName, score}) => {
+        this.PUSH_FINAL_SCORE({playerName, score})
+      })
     }
   }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

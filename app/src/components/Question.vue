@@ -1,11 +1,11 @@
 <template>
   <div>
     <div v-if='!currentQuestion.name'>
-      Fudge. Something went wrong. Actually, I wonder if Devon eats fudge...
+      Oh no. Maybe still loading, maybe something broke. Fudge. (Actually, I wonder if Devon eats fudge...)
     </div>
     <div v-else>
       <div id="question">
-        <h3>Will Devon eat...</h3>
+        <h3>Does Devon eat...</h3>
         <h1>{{ currentQuestion.name }}?</h1>
         <h2 v-if='foodModule.showAnswer'>The answer is: {{ currentQuestion.answer }}</h2>
         <h2 v-else>...</h2>
@@ -102,7 +102,8 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(255,255,255,0.9);
+    background-color: rgba(255,255,255,0.6);
+    padding-bottom: 50px;
   }
 
   .options button {

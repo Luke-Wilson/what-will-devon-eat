@@ -5,10 +5,13 @@ const state = {
   playerName: "",
   currentAnswer: "",
   score: 0,
+  finalScores: [],
 };
 
 const getters = {
-
+  getOrderedFinalScores: (state) => {
+    return state.finalScores.sort((a,b) => { a.score < b.score ? 1 : -1})
+  }
 };
 
 const actions = {
@@ -28,6 +31,9 @@ const actions = {
       commit('UPDATE_SCORE', 1)
     }
   },
+  addMessage({commit}, message) {
+    commit('PUSH_MESSAGE', {message})
+  }
 }
 
 const mutations = {
@@ -35,11 +41,19 @@ const mutations = {
     state[key] = value
   },
   PUSH_MESSAGE(state, {message}) {
-    state.messages.push(message)
+    let messages = state.messages
+    messages.unshift(message)
+    if (messages.length > 20) {
+      messages = messages.slice(0,19)
+    }
+    state.messages = messages
   },
   UPDATE_SCORE(state, points) {
     state.score += points
   },
+  PUSH_FINAL_SCORE(state, {playerName, score}) {
+    state.finalScores.push({playerName, score})
+  }
 }
 
 export default {
