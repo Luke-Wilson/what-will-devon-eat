@@ -11,4 +11,4 @@ COPY . /wwwroot
 
 EXPOSE 3000
 
-CMD ["npm", "run", "serve-watch"]
+CMD ["npm", "run", "serve"]

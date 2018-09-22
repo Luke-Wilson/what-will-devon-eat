@@ -26,6 +26,13 @@ io.on('connection', (socket) => {
     io.emit('revealanswer')
   })
 
+  socket.on('finalscore', ({playerName, score}) => {
+    io.emit('playerscore', {
+      playerName,
+      score,
+    })
+  })
+
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });
@@ -38,7 +45,7 @@ app.use(morgan('dev'));
 // Middleware for CORS Headers
 app.use((req, res, next) => {
     // Website you wish to allow to connect
-    var allowedOrigins = ['http://localhost', 'http://104.248.189.238'];
+    var allowedOrigins = ['http://localhost', 'http://localhost:8080', 'http://104.248.189.238'];
     var origin = req.headers.origin;
     if (allowedOrigins.indexOf(origin) > -1) {
       console.log(origin)
