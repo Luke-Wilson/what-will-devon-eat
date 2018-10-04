@@ -30,22 +30,4 @@ export default {
       },
     });
   },
-
-  // getRoomListing(queryParams) {
-  //   return axios.get(`${muraAPIEndpoint}`, {
-  //     params: {
-  //       method: 'getCachedRoomListing',
-  //       ...queryParams,
-  //     }
-  //   })
-  // },
-  //
-  // sendReservation(reservation) {
-  //   return axios.post(`${muraAPIEndpoint}?method=sendReservation`, {
-  //     headers: {
-  //       'content-type': 'application/json'
-  //     },
-  //     content: JSON.stringify(reservation)
-  //   })
-  // },
 }
